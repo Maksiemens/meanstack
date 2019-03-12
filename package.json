@@ -1,0 +1,42 @@
+{
+  "name": "meanstack",
+  "version": "1.0.0",
+  "description": "app with MongoDB, Express.js, Angular 7.js, Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "server": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maksiemens/meanstack.git"
+  },
+  "keywords": [
+    "Express",
+    "Angular"
+  ],
+  "author": "Kondratenko Maks",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maksiemens/meanstack/issues"
+  },
+  "homepage": "https://github.com/Maksiemens/meanstack#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.18",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "nodemon": "^1.18.10",
+    "prettier": "^1.16.4"
+  }
+}

@@ -1,0 +1,17 @@
+https://blog.echobind.com/integrating-prettier-eslint-airbnb-style-guide-in-vscode-47f07b5d7d6a
+
+https://medium.com/@svyandun/eslint-airbnb-javascript-style-guide-prettier-vs-code-ffdad3029044
+
+
+
+
+
+
+
+
+
+
+
+
+
+
