@@ -1,0 +1,98 @@
+<div class="page-title">
+  <h4>
+    <a [routerLink]="['/categories']">Категории</a>
+    <i class="material-icons">keyboard_arrow_right</i>
+    {{ isNew ? 'Добавить' : 'Редактировать' }} категорию
+  </h4>
+  <span>
+    <button
+      class="btn btn-small red waves-effect waves-light"
+      (click)="openConfirmationCategory()"
+    >
+      <i class="material-icons">delete</i>
+    </button>
+  </span>
+</div>
+
+<div id="modal1" class="modal" #modalWindow>
+  <div class="modal-content">
+    <h4>Удаление категории будет без возможности востановления</h4>
+    <p>Вы уверены, что хотите удалить категорию {{ currentCategory?.name }}</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      class="modal-close waves-effect waves-light btn-small modal-footer__button"
+      (click)="deleteCategoryCancel()"
+    >
+      <i class="material-icons right">cancel</i>Отмена
+    </button>
+    <button
+      class="modal-close waves-effect waves-light btn-small modal-footer__button"
+      (click)="deleteCategoryDone()"
+    >
+      <i class="material-icons right">done</i>Удалить
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <form class="col s12 l6" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="input-field">
+      <label for="name">Название</label>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        [ngClass]="{
+          invalid: form.get('name').invalid && form.get('name').touched
+        }"
+      />
+      <span
+        class="helper-text red-text"
+        *ngIf="form.get('name').invalid && form.get('name').touched"
+      >
+        <span *ngIf="form.get('name').hasError('required')"
+          >Имя категории не может быть пустым</span
+        >
+      </span>
+    </div>
+
+    <div class="upload-image">
+      <input
+        class="upload-image__input"
+        type="file"
+        #inputUploadFile
+        (change)="onFileUpload($event)"
+      />
+      <button
+        class="waves-effect waves-light btn orange lighten-2 mb2 upload-image__button"
+        type="button"
+        (click)="triggerClick()"
+        [disabled]="form.disabled"
+      >
+        <i class="material-icons left upload-image__icon">backup</i>
+        Загрузить изображение
+      </button>
+    </div>
+
+    <div>
+      <button
+        class="waves-effect waves-light btn"
+        type="submit"
+        [disabled]="form.invalid || form.disabled"
+      >
+        Сохранить изменения
+      </button>
+    </div>
+  </form>
+
+  <div class="col s12 l4 center preview">
+    <img
+      class="responsive-img preview__image"
+      [src]="imagePreview"
+      *ngIf="imagePreview"
+    />
+  </div>
+</div>
+
+<!-- <app-positions-form></app-positions-form> -->

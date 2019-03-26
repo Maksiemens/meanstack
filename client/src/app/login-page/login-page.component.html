@@ -1,16 +1,57 @@
-<div class="card">
+<form class="card" [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="card-content">
     <span class="card-title">Войти в систему</span>
     <div class="input-field">
-      <input id="email" type="email" required />
+      <input
+        [ngClass]="{
+          invalid: form.get('email').invalid && form.get('email').touched
+        }"
+        id="email"
+        type="email"
+        formControlName="email"
+      />
       <label for="email">Email:</label>
+      <span
+        class="helper-text red-text"
+        *ngIf="form.get('email').invalid && form.get('email').touched"
+      >
+        <span *ngIf="form.get('email').hasError('required')"
+          >Email не должен быть пустым</span
+        >
+        <span *ngIf="form.get('email').hasError('email')"
+          >Введите корректный email</span
+        >
+      </span>
     </div>
     <div class="input-field">
-      <input id="password" type="password" required />
+      <input
+        [ngClass]="{invalid: form.get('password').invalid && form.get('password').touched}"
+        id="password"
+        type="password"
+        formControlName="password"
+      />
       <label for="password">Пароль:</label>
+      <span
+        class="helper-text red-text"
+        *ngIf="form.get('password').invalid && form.get('password').touched"
+      >
+        <span *ngIf="form.get('password').hasError('required')"
+          >Пароль не должен быть пустым</span
+        >
+        <span
+          *ngIf="form.get('password').getError('minlength') && form.get('password').getError('minlength').requiredLength">
+          Пароль должен быть больше {{ form.get('password').getError('minlength').requiredLength }} символов.
+          Сейчас {{ form.get('password').getError('minlength').actualLength }} символов
+        </span>
+      </span>
     </div>
   </div>
   <div class="card-action">
-    <button class="modal-action btn waves-effect">Войти</button>
+    <button
+      class="modal-action btn waves-effect"
+      type="submit"
+      [disabled]="form.invalid || form.disabled">
+      Войти
+    </button>
   </div>
-</div>
+</form>

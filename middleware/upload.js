@@ -12,16 +12,14 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, callback) => {
-  if (file.mimetype === 'image/png' || file.mimetype === 'image/jpg') {
+  if (file.mimetype === 'image/png' || file.mimetype === 'image/jpeg') {
     callback(null, true);
   } else {
     callback(null, false);
   }
 };
 
-const limits = {
-  fileSize: 1024 * 1024 * 5
-};
+const limits = { fileSize: 1024 * 1024 * 5 };
 
 module.exports = multer({
   storage: storage,

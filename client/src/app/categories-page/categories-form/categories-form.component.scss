@@ -1,0 +1,21 @@
+.upload-image {
+  &__input {
+    display: none;
+  }
+}
+
+.preview {
+  &__image {
+    max-height: 200px;
+  }
+}
+
+.modal {
+
+  .modal-footer {
+    &__button {
+      margin: 6px 10px;
+    }
+  }
+}
+
